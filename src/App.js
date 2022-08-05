@@ -17,8 +17,8 @@ export default class App extends Component {
     this.state = {
       photos: [],
       dog: [],
-      rabbit: [],
-      koala: [],
+      ocean: [],
+      mountain: [],
     };
   }
 
@@ -26,14 +26,14 @@ export default class App extends Component {
   componentDidMount() {
     this.performSearch();
     this.performSearch("dog");
-    this.performSearch("rabbit");
-    this.performSearch("koala");
+    this.performSearch("ocean");
+    this.performSearch("mountain");
   }
 
 
 //Create a function that takes in a parameter named query and updates the given state when called
 // Fetch data using axios 
-  performSearch = (query = "cat") => {
+  performSearch = (query = "roses") => {
     axios
       .get(
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
@@ -43,16 +43,16 @@ export default class App extends Component {
           this.setState({
             dog: response.data.photos.photo,
           });
-        } else if (query === "rabbit") {
+        } else if (query === "ocean") {
           this.setState({
-            rabbit: response.data.photos.photo,
+            ocean: response.data.photos.photo,
           });
-        } else if (query === "koala") {
+        } else if (query === "mountain") {
           this.setState({
-            koala: response.data.photos.photo,
+            mounatin: response.data.photos.photo,
           });
         } else {
-          this.setState({
+        this.setState({
             photos: response.data.photos.photo,
           });
         }
@@ -82,12 +82,12 @@ export default class App extends Component {
               render={() => <PhotoContainer data={this.state.dog} />}
             />
             <Route
-              path="/rabbit"
-              render={() => <PhotoContainer data={this.state.rabbit} />}
+              path="/ocean"
+              render={() => <PhotoContainer data={this.state.ocean} />}
             />
             <Route
-              path="/koala"
-              render={() => <PhotoContainer data={this.state.koala} />}
+              path="/mountain"
+              render={() => <PhotoContainer data={this.state.mountain} />}
             />
             <Route exact path="/search/:query" 
             render={ ()=> <PhotoContainer data={this.state.photos}/>}/>

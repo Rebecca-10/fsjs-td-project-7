@@ -7,8 +7,7 @@ class Nav extends Component {
   }
 
   handleClick= (e) => {
-    this.props.onClick(e.target.textContent.toLowerCase());
-
+    
     this.setState({
       button: e.target.textContent.toLowerCase()
     });
@@ -23,10 +22,10 @@ class Nav extends Component {
             <NavLink to="/dog" onClick={this.handleClick}>dog</NavLink>
           </li>
           <li>
-            <NavLink to="/rabbit" onClick={this.handleClick}>rabbit</NavLink>
+            <NavLink to="/ocean" onClick={this.handleClick}>ocean</NavLink>
           </li>
           <li>
-            <NavLink to="/koala" onClick={this.handleClick}>koala</NavLink>
+            <NavLink to="/tress" onClick={this.handleClick}>tree</NavLink>
           </li>
         </ul>
       </nav>

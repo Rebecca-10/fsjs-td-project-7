@@ -52,10 +52,10 @@ export default class App extends Component {
             mountain: response.data.photos.photo,
           });
         } else {
-          this.setState({ query: query})
-          this.setState({ photo: response.data.photos.photo });
+        this.setState({
+            photos: response.data.photos.photo,
+          });
         }
-        
       })
 
       .catch((error) => {

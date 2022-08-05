@@ -49,13 +49,13 @@ export default class App extends Component {
           });
         } else if (query === "mountain") {
           this.setState({
-            mounatin: response.data.photos.photo,
+            mountain: response.data.photos.photo,
           });
         } else {
-        this.setState({
-            photos: response.data.photos.photo,
-          });
+          this.setState({ query: query})
+          this.setState({ photo: response.data.photos.photo });
         }
+        
       })
 
       .catch((error) => {

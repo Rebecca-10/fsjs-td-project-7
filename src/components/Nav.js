@@ -7,6 +7,8 @@ class Nav extends Component {
   }
 
   handleClick= (e) => {
+
+    
     
     this.setState({
       button: e.target.textContent.toLowerCase()
@@ -25,7 +27,7 @@ class Nav extends Component {
             <NavLink to="/ocean" onClick={this.handleClick}>ocean</NavLink>
           </li>
           <li>
-            <NavLink to="/tress" onClick={this.handleClick}>tree</NavLink>
+            <NavLink to="/mountain" onClick={this.handleClick}>mountain</NavLink>
           </li>
         </ul>
       </nav>

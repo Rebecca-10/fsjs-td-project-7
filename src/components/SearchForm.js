@@ -1,37 +1,42 @@
-import React, { Component } from "react";
-import { withRouter } from 'react-router-dom';
+//Imported Dependencies
+import React, { Component } from 'react';
+import { withRouter} from 'react-router-dom';
 
+//Created a search component
 class SearchForm extends Component {
 
-  state = {
-    searchText: ''
-  }
+  //Set the state searchText to empty
+ state = {
+     searchText: ''
+ }
 
-  onSearchChange = e => {
-    this.setState({ searchText: e.target.value});
-  }
+ // Created an event listener that listens to what users input 
+ onSearchChange = e => {
+   this.setState({ searchText: e.target.value });
 
-//creates unique path based on search
-  handleSubmit= (e) => {
-    e.preventDefault();
-    this.props.onSearch(this.query.value);
-    e.currentTarget.reset();
-    let path = `/${this.state.searchText}`;
-    this.props.history.push(path);
-    
-
-  }
+ }
+//An eventhandler that listens for what was input in
+ handleSubmit = e => {
+     e.preventDefault();
+     this.props.onSearch(this.query.value);
+     this.props.history.push(`/search/${this.query.value}`)
+     e.currentTarget.reset();
   
-  render() {
-    return (
-      <form className="search-form" onSubmit={this.handleSubmit}>
-        <input type="search" 
-                onChange={this.onSearchChange} 
-                ref={ (input) => this.query = input}
-                name="search" 
-                placeholder="Search" required/>
-        <button type="submit" className="search-button">
-          <svg
+
+     
+ }
+
+ // render and return the given information 
+ render() {
+  return (
+    <form className="search-form" onSubmit={this.handleSubmit}>
+        <input type='search'
+               onChange={this.onSearchChange}
+               name='search'
+               ref={(input) => this.query = input}
+               placeholder="Search..." required/>
+        <button type="submit" id="submit" className="search-button">
+        <svg
             fill="#fff"
             height="24"
             viewBox="0 0 23 23"
@@ -42,9 +47,17 @@ class SearchForm extends Component {
             <path d="M0 0h24v24H0z" fill="none" />
           </svg>
         </button>
-      </form>
-    );
-  }
-}
+    </form>
 
+
+  )
+
+
+ }
+
+
+
+
+
+}
 export default withRouter(SearchForm);
